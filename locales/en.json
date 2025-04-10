@@ -1,6 +1,45 @@
 {
     "profile_dropdown": {
-        "title": "Profile", 
+        "title": "Profile",
         "logout": "Logout"
+    },
+    "customer": {
+        "id": "Customer ID",
+        "name": "Fullname",
+        "gender": "เพศ",
+        "tel": "Phone",
+        "fax": "Fax",
+        "tax": "Tax",
+        "no": "Number",
+        "tambon": "Tambon",
+        "aumper": "Aumphoe",
+        "province": "Province",
+        "code": "Postal Code",
+        "action": "Action"
+    },
+    "button": {
+        "add": "Add",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Save",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "close": "Close"
+    },
+    "title": {
+        "add_success": "Data added successfully",
+        "edit_success": "Data edited successfully",
+        "del_success": "Data deleted successfully",
+        "del_confirm": "Are you sure?",
+        "del_text": "Data has been deleted successfully"
+    },
+    "text": {
+        "add_success": "Data has been added successfully",
+        "edit_success": "Data has been edited successfully",
+        "del_success": "Data has been deleted successfully",
+        "del_confirm": "Do you want to delete this item?"
+    },
+    "validation": {
+        "required": "This field is required."
     }
 }

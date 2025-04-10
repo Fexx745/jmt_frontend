@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 
-onMounted(() => {
-    if (!localStorage.getItem("token")) {
-        console.log("Token not found, redirecting to login page.");
-        window.location.href = "/auth/login";
-    }
+onMounted(() => { 
+    
+    
 }); 
 </script>
 

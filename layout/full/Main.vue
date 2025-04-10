@@ -1,46 +1,69 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import { ref, computed } from "vue";
 import LanguageSwitcher from "./vertical-header/LanguageSwitcher.vue";
 import ThemeSwitcher from "./vertical-header/ThemeSwitcher.vue";
 import ProfileDD from "./vertical-header/ProfileDD.vue";
 
 const { t } = useI18n();
-const drawer = ref(false);
 
-const navbar_items = computed(() => [
-    { text: t('home.text'), href: "home", icon: "mdi-home" },
+const sidebar_menus = ref([
+    {
+        header: "หน้าหลัก",
+        childs: [
+            { text: "แดชบอร์ด", href: "/dashboard", icon: "mdi-view-dashboard" },
+            { text: "รายการลูกค้า", href: "/clients", icon: "mdi-account-group" },
+        ]
+    },
+    {
+        header: "จัดการข้อมูล",
+        childs: [
+            { text: "รายงาน", href: "/reports", icon: "mdi-file-chart" },
+            { text: "การเงิน", href: "/finance", icon: "mdi-currency-usd" },
+            { text: "การตั้งค่า", href: "/settings", icon: "mdi-cog" },
+        ]
+    }
 ]);
 
-const fullText = "GGAS Stock Management System";  
+const sDrawer = ref(true); 
 </script>
 
 <template>
-    <!-- App Bar (Fixed Navbar) -->
-    <v-app-bar app fixed elevation="4" density="comfortable" class="custom-app-bar">
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-row align="center" style="width: 100%;" justify="space-between" class="px-8">
-            <v-responsive class="d-flex align-center">
-                <strong class="text kanit-medium text-h6 text-md-body-1 text-lg-h6 ">
-                    {{ fullText }}
-                </strong>
-            </v-responsive>
+    <v-navigation-drawer left elevation="0" app class="leftSidebar" v-model="sDrawer">
+        <div class="pa-2 ml-n4">
+            <LayoutFullLogo />
+        </div>
+        <perfect-scrollbar class="scrollnavbar">
+            <v-list class="py-2 px-4">
+                <template v-for="(menu, i) in sidebar_menus" :key="menu.header">
+                    <v-list-subheader v-if="menu.header" class="text-uppercase font-weight-bold">
+                        {{ menu.header }}
+                    </v-list-subheader>
+                    <template v-for="(item, index) in menu.childs" :key="index">
+                        <v-list-item :to="item.href" :value="item.href" color="primary" class="mb-1" rounded="lg">
+                            <template v-slot:prepend>
+                                <v-icon :icon="item.icon"></v-icon>
+                            </template>
+                            <v-list-item-title>{{ item.text }}</v-list-item-title>
+                        </v-list-item>
+                    </template>
+                </template>
+            </v-list>
+        </perfect-scrollbar>
+    </v-navigation-drawer>
+
+    <v-app-bar elevation="0" height="70">
+        <div class="d-flex align-center justify-space-between w-100">
+            <div>
+                <v-btn class="ms-md-3 ms-sm-5 ms-3 text-muted" @click="sDrawer = !sDrawer" icon variant="flat"
+                    size="small">
+                    <v-app-bar-nav-icon />
+                </v-btn>
+            </div>
             <div class="d-flex align-center">
                 <LanguageSwitcher />
                 <ThemeSwitcher />
                 <ProfileDD />
             </div>
-        </v-row>
+        </div>
     </v-app-bar>
-
-    <v-navigation-drawer v-model="drawer" app temporary>
-        <v-list>
-            <v-list-item v-for="(item, index) in navbar_items" :key="index" :href="item.href">
-                <template v-slot:prepend>
-                    <v-icon>{{ item.icon }}</v-icon>
-                </template>
-                <v-list-item-title>{{ item.text }}</v-list-item-title>
-            </v-list-item>
-        </v-list>
-    </v-navigation-drawer>
 </template>

@@ -5,8 +5,7 @@ import { useI18n } from 'vue-i18n';
 import Swal from 'sweetalert2';
 
 const { t } = useI18n();
-const router = useRouter();
-const { authLogout } = useAuth();
+const router = useRouter(); 
 
 const logout = async () => {
   const result = await Swal.fire({
@@ -18,10 +17,7 @@ const logout = async () => {
     cancelButtonText: t('logout.cancelButton'),
   });
 
-  if (result.isConfirmed) {
-    await authLogout();
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+  if (result.isConfirmed) {  
 
     router.push('/auth/login');
 

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Main from '~/layout/full/Main.vue';
-const title = ref("GGas Stock Management System");
+const title = ref("JMT Client");
 
 useHead({
   meta: [{ content: title }],
   titleTemplate: () => {
-    return "GGas Stock Management System";
+    return "JMT Client";
   },
 }); 
 </script>

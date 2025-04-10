@@ -1,11 +1,11 @@
 <script setup lang="ts"> 
 
-const title = ref("GGas Stock Management System");
+const title = ref("JMT Client");
 
 useHead({
   meta: [{ content: title }],
   titleTemplate: () => {
-    return "GGas Stock Management System login";
+    return "JMT Client";
   },
 });
 </script>
