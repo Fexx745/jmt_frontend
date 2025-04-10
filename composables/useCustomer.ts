@@ -9,7 +9,7 @@ const getCustomerBy = (): Promise<Customer[]> => preSecureFetch(
 
 const getCustomerByID = (data: { customer_id: string }): Promise<Customer> => preSecureFetch(
     `${useRuntimeConfig().public.apiBaseUrl}/${prefix}/getCustomerByID`, {
-    method: "GET",
+    method: "POST",
     body: JSON.stringify(data),
 })
 

@@ -46,29 +46,15 @@ const onSubmit = async () => {
     if (!validateForm()) {
         return
     }
-
     submitting.value = true;
     try {
         await updateCustomerBy(customer.value);
-        customer.value = {
-            customer_id: '',
-            customer_name: '',
-            customer_gender: '',
-            customer_tel: '',
-            customer_fax: '',
-            customer_tax: '',
-            customer_no: '',
-            customer_tambon: '',
-            customer_aumper: '',
-            customer_province: '',
-            customer_code: '',
-        };
         emit('close')
         emit('done')
         Swal.fire({
             icon: 'success',
-            title: t('title.add_success'),
-            text: t('text.add_success'),
+            title: t('title.edit_success'),
+            text: t('text.edit_success'),
         });
     } catch (error) {
         console.error("Error", error);
@@ -101,7 +87,7 @@ const validateForm = () => {
 <template>
     <template v-if="pending">
         <v-card-text class="text-center py-4">
-            <v-label>กำลังโหลดข้อมูล ...</v-label>
+            <v-label>{{ t('any.loading') }}</v-label>
             <v-progress-circular class="ml-4" indeterminate color="primary"></v-progress-circular>
         </v-card-text>
     </template>
@@ -116,7 +102,7 @@ const validateForm = () => {
                 <v-col cols="12" md="4">
                     <v-label class="mb-2">Gender<span class="text-error ml-1">*</span></v-label>
                     <v-select v-model="customer.customer_gender" :error-messages="errors.customer_gender"
-                        :items="['ชาย', 'หญิง', 'ไม่ระบุ']" variant="outlined" density="compact" return-object />
+                        :items="['male', 'female']" variant="outlined" density="compact" return-object />
                 </v-col>
                 <v-col cols="12" md="4">
                     <v-label class="mb-2">{{ $t('customer.tel') }}<span class="text-error ml-1">*</span></v-label>

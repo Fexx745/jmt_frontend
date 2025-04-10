@@ -6,24 +6,35 @@ import ProfileDD from "./vertical-header/ProfileDD.vue";
 
 const { t } = useI18n();
 
-const sidebar_menus = ref([
+const sidebar_menus = computed(() => [
     {
-        header: "หน้าหลัก",
+        header: t("sidebar.title.general_info"),
         childs: [
-            { text: "แดชบอร์ด", href: "/dashboard", icon: "mdi-view-dashboard" },
-            { text: "รายการลูกค้า", href: "/clients", icon: "mdi-account-group" },
+            { text: t("sidebar.customer"), href: "/customer", icon: "mdi-account" },
+            { text: t("sidebar.salestaff"), href: "/sale-staff", icon: "mdi-account-tie" },
+            { text: t("sidebar.staff"), href: "/staff", icon: "mdi-account-multiple" },
+            { text: t("sidebar.manager"), href: "/manager", icon: "mdi-account-star" },
         ]
     },
     {
-        header: "จัดการข้อมูล",
+        header: t("sidebar.title.warehouse"),
         childs: [
-            { text: "รายงาน", href: "/reports", icon: "mdi-file-chart" },
-            { text: "การเงิน", href: "/finance", icon: "mdi-currency-usd" },
-            { text: "การตั้งค่า", href: "/settings", icon: "mdi-cog" },
+            { text: t("sidebar.stock"), href: "/stock", icon: "mdi-warehouse" },
+            { text: t("sidebar.store"), href: "/store", icon: "mdi-storefront" },
+            { text: t("sidebar.product"), href: "/product", icon: "mdi-cube" },
+            { text: t("sidebar.promotion"), href: "/promotion", icon: "mdi-gift" },
+            { text: t("sidebar.order"), href: "/order", icon: "mdi-cart" },
+            { text: t("sidebar.slip"), href: "/slip", icon: "mdi-file-document" },
+        ]
+    },
+    {
+        header: t("sidebar.title.statistics"),
+        childs: [
+            { text: t("sidebar.sales"), href: "/sales", icon: "mdi-chart-line" },
+            { text: t("sidebar.report"), href: "/report", icon: "mdi-file-chart-outline" },
         ]
     }
 ]);
-
 const sDrawer = ref(true); 
 </script>
 

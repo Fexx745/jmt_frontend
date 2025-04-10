@@ -5,32 +5,9 @@ import { useI18n } from 'vue-i18n';
 import Swal from 'sweetalert2';
 
 const { t } = useI18n();
-const router = useRouter(); 
+const router = useRouter();
 
 const logout = async () => {
-  const result = await Swal.fire({
-    title: t('logout.confirmTitle'),
-    text: t('logout.confirmText'),
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonText: t('logout.confirmButton'),
-    cancelButtonText: t('logout.cancelButton'),
-  });
-
-  if (result.isConfirmed) {  
-
-    router.push('/auth/login');
-
-    await Swal.fire({
-      title: t('logout.successTitle'),
-      text: t('logout.successText'),
-      icon: 'success',
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-    });
-  }
 };
 
 const items = computed(() => {

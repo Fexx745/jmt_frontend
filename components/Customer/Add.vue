@@ -24,9 +24,7 @@ const customer = ref<Customer>({
 });
 
 const onSubmit = async () => {
-    if (!validateForm()) {
-        return
-    }
+    if (!validateForm()) { return }
     try {
         await insertCustomerBy(customer.value);
         customer.value = {
@@ -79,53 +77,70 @@ const validateForm = () => {
     <v-card-text>
         <v-row>
             <v-col cols="12" md="4">
-                <v-label class="mb-2">{{ $t('customer.name') }}<span class="text-error ml-1">*</span></v-label>
+                <v-label class="mb-2">
+                    {{ $t('customer.name') }}<span class="text-error ml-1">*</span>
+                </v-label>
                 <v-text-field v-model="customer.customer_name" :error-messages="errors.customer_name" variant="outlined"
-                    density="compact" />
+                    density="compact" :placeholder="$t('customer.name')" />
             </v-col>
             <v-col cols="12" md="4">
-                <v-label class="mb-2">Gender<span class="text-error ml-1">*</span></v-label>
+                <v-label class="mb-2">
+                    {{ $t('customer.gender') }}<span class="text-error ml-1">*</span>
+                </v-label>
                 <v-select v-model="customer.customer_gender" :error-messages="errors.customer_gender"
-                    :items="['ชาย', 'หญิง', 'ไม่ระบุ']" variant="outlined" density="compact" return-object />
+                    :items="['male', 'female']" variant="outlined" density="compact"
+                    :placeholder="$t('customer.gender')" return-object />
             </v-col>
             <v-col cols="12" md="4">
-                <v-label class="mb-2">{{ $t('customer.tel') }}<span class="text-error ml-1">*</span></v-label>
+                <v-label class="mb-2">
+                    {{ $t('customer.tel') }}<span class="text-error ml-1">*</span>
+                </v-label>
                 <v-text-field v-model="customer.customer_tel" :error-messages="errors.customer_tel" variant="outlined"
-                    density="compact" />
+                    density="compact" :placeholder="$t('customer.tel')" />
             </v-col>
             <v-col cols="12" md="4">
                 <v-label class="mb-2">{{ $t('customer.fax') }}<span class="text-error ml-1">*</span></v-label>
                 <v-text-field v-model="customer.customer_fax" :error-messages="errors.customer_fax" variant="outlined"
-                    density="compact" />
+                    density="compact" :placeholder="$t('customer.fax')" />
             </v-col>
+
             <v-col cols="12" md="4">
                 <v-label class="mb-2">{{ $t('customer.tax') }}<span class="text-error ml-1">*</span></v-label>
                 <v-text-field v-model="customer.customer_tax" :error-messages="errors.customer_tax" variant="outlined"
-                    density="compact" />
+                    density="compact" :placeholder="$t('customer.tax')" />
             </v-col>
+
             <v-col cols="12" md="4">
                 <v-label class="mb-2">{{ $t('customer.no') }}<span class="text-error ml-1">*</span></v-label>
                 <v-text-field v-model="customer.customer_no" :error-messages="errors.customer_no" variant="outlined"
-                    density="compact" />
+                    density="compact" :placeholder="$t('customer.no')" />
             </v-col>
+
             <v-col cols="12" md="3">
                 <v-label class="mb-2">{{ $t('customer.tambon') }}</v-label>
-                <v-text-field v-model="customer.customer_tambon" variant="outlined" density="compact" />
+                <v-text-field v-model="customer.customer_tambon" variant="outlined" density="compact"
+                    :placeholder="$t('customer.tambon')" />
             </v-col>
+
             <v-col cols="12" md="3">
                 <v-label class="mb-2">{{ $t('customer.aumper') }}</v-label>
-                <v-text-field v-model="customer.customer_aumper" variant="outlined" density="compact" />
+                <v-text-field v-model="customer.customer_aumper" variant="outlined" density="compact"
+                    :placeholder="$t('customer.aumper')" />
             </v-col>
+
             <v-col cols="12" md="3">
                 <v-label class="mb-2">{{ $t('customer.province') }}</v-label>
-                <v-text-field v-model="customer.customer_province" variant="outlined" density="compact" />
+                <v-text-field v-model="customer.customer_province" variant="outlined" density="compact"
+                    :placeholder="$t('customer.province')" />
             </v-col>
 
             <v-col cols="12" md="3">
                 <v-label class="mb-2">{{ $t('customer.code') }}</v-label>
-                <v-text-field v-model="customer.customer_code" variant="outlined" density="compact" />
+                <v-text-field v-model="customer.customer_code" variant="outlined" density="compact"
+                    :placeholder="$t('customer.code')" />
             </v-col>
         </v-row>
+
     </v-card-text>
     <v-divider></v-divider>
     <v-card-text class="d-flex justify-center py-4">

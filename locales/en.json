@@ -6,7 +6,7 @@
     "customer": {
         "id": "Customer ID",
         "name": "Fullname",
-        "gender": "เพศ",
+        "gender": "Gender",
         "tel": "Phone",
         "fax": "Fax",
         "tax": "Tax",
@@ -15,13 +15,29 @@
         "aumper": "Aumphoe",
         "province": "Province",
         "code": "Postal Code",
-        "action": "Action"
+        "manage": "Manage Customer",
+        "title_add": "Add Customer",
+        "title_update": "Edit Customer",
+        "title_detail": "Customer Detail"
+    },
+    "salestaff": {
+        "id": "Sales Staff ID",
+        "name": "Name",
+        "gender": "Gender",
+        "age": "Age",
+        "phone": "Phone",
+        "fax": "Fax",
+        "manage": "Manage Sales Staff",
+        "title_add": "Add Sales Staff",
+        "title_update": "Edit Sales Staff",
+        "title_detail": "Sales Staff Detail"
     },
     "button": {
         "add": "Add",
         "edit": "Edit",
         "delete": "Delete",
         "save": "Save",
+        "detail": "Detail",
         "cancel": "Cancel",
         "confirm": "Confirm",
         "close": "Close"
@@ -41,5 +57,30 @@
     },
     "validation": {
         "required": "This field is required."
+    },
+    "any": {
+        "loading": "Loading...",
+        "no_data": "No data found.",
+        "search": "Search...",
+        "actions": "Manage Data"
+    },
+    "sidebar": {
+        "title": {
+            "general_info": "General Information",
+            "warehouse": "Warehouse",
+            "statistics": "Statistics"
+        },
+        "customer": "Customer",
+        "salestaff": "Sales Staff",
+        "staff": "Staff",
+        "manager": "Manager",
+        "stock": "Stock",
+        "store": "Store",
+        "product": "Product",
+        "promotion": "Promotion",
+        "order": "Order",
+        "slip": "Slip",
+        "sales": "Sales",
+        "report": "Report"
     }
 }

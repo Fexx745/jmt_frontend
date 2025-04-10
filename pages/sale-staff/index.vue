@@ -1,43 +1,40 @@
 <script setup lang="ts">
 import Swal from "sweetalert2";
-import type { Customer } from "@/misc/type";
+import type { SaleStaff } from "@/misc/type";
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 
-const { getCustomerBy, deleteCustomerBy } = useCustomer();
+const { getSaleStaffBy, deleteSaleStaffBy } = useSaleStaff();
 
 const dialogAdd = ref(false);
 const dialogUpdate = ref(false);
 const dialogDetail = ref(false);
-const customers = ref<Customer[]>([]);
+const salestaffs = ref<SaleStaff[]>([]);
 const loading = ref(false);
 const searchTerm = ref('');
-const customer_id = ref('');
+const salestaff_id = ref('');
 
 const headers = computed(() => [
-    { title: t('customer.id'), key: 'customer_id' },
-    { title: t('customer.name'), key: 'customer_name' },
-    { title: t('customer.gender'), key: 'customer_gender' },
-    { title: t('customer.tel'), key: 'customer_tel' },
-    { title: t('customer.tax'), key: 'customer_tax' },
-    { title: t('customer.tambon'), key: 'customer_tambon' },
-    { title: t('customer.aumper'), key: 'customer_aumper' },
-    { title: t('customer.province'), key: 'customer_province' },
-    { title: t('customer.code'), key: 'customer_code' },
+    { title: t('salestaff.id'), key: 'salestaff_id' },
+    { title: t('salestaff.name'), key: 'salestaff_name' },
+    { title: t('salestaff.gender'), key: 'salestaff_gender' },
+    { title: t('salestaff.age'), key: 'salestaff_age' },
+    { title: t('salestaff.phone'), key: 'salestaff_phone' },
+    { title: t('salestaff.fax'), key: 'salestaff_fax' },
     { title: t('any.actions'), key: 'actions' },
 ]);
 
 
 onMounted(async () => {
-    await fetchCustomers();
+    await fetchSaleStaffs();
 });
 
-const fetchCustomers = async () => {
+const fetchSaleStaffs = async () => {
     loading.value = true;
     try {
-        customers.value = await getCustomerBy();
+        salestaffs.value = await getSaleStaffBy();
     } catch (error) {
-        console.error("Error loading customers", error);
+        console.error("Error loading salestaffs", error);
     } finally {
         loading.value = false;
     }
@@ -57,7 +54,7 @@ const closeDialog = (type: string) => {
     }
 };
 
-const onDelete = (customer_id: string) => Swal.fire({
+const onDelete = (salestaff_id: string) => Swal.fire({
     title: t('title.del_confirm'),
     text: t('text.del_confirm'),
     icon: "warning",
@@ -65,8 +62,8 @@ const onDelete = (customer_id: string) => Swal.fire({
 }).then(async ({ value }) => {
     try {
         if (!value) return
-        await deleteCustomerBy({ customer_id: customer_id })
-        await fetchCustomers()
+        await deleteSaleStaffBy({ salestaff_id: salestaff_id })
+        await fetchSaleStaffs()
         Swal.fire({ title: t('title.del_success'), text: t('text.del_success'), icon: "success" })
     } catch (e) {
         console.error(e)
@@ -74,21 +71,21 @@ const onDelete = (customer_id: string) => Swal.fire({
 })
 
 const onUpdate = (id: string) => {
-    customer_id.value = id;
+    salestaff_id.value = id;
     dialogUpdate.value = true;
 };
 
 const viewDetail = (id: string) => {
-    customer_id.value = id;
+    salestaff_id.value = id;
     dialogDetail.value = true;
 };
 
-const searchCustomer = computed(() => {
-    if (!searchTerm.value) return customers.value;
+const searchSaleStaff = computed(() => {
+    if (!searchTerm.value) return salestaffs.value;
     const term = searchTerm.value.toLowerCase();
 
-    return customers.value.filter(customer =>
-        customer.customer_name.toLowerCase().includes(term)
+    return salestaffs.value.filter(salestaff =>
+        salestaff.salestaff_name.toLowerCase().includes(term)
     );
 });
 </script>
@@ -97,7 +94,7 @@ const searchCustomer = computed(() => {
     <v-container>
         <v-card elevation="5" class="pa-2 withbg">
             <v-card-title>
-                {{ $t('customer.manage') }}
+                {{ $t('salestaff.manage') }}
                 <v-spacer></v-spacer>
             </v-card-title>
             <v-card-text>
@@ -107,19 +104,19 @@ const searchCustomer = computed(() => {
                             density="compact" variant="outlined" hide-details style="width: 500px"></v-text-field>
                     </v-col>
                     <v-col class="d-flex flex-wrap gap-2 align-center justify-md-end py-2" cols="12" md="9">
-                        <v-btn elevation="3" prepend-icon="mdi-plus" color="success" @click="openAddDialog">
-                            {{ $t('button.add') }}
+                        <v-btn elevation="3" prepend-icon="mdi-plus" color="success" @click="openAddDialog">{{
+                            t('button.add') }}
                         </v-btn>
                     </v-col>
                 </v-row>
-                <v-data-table :headers="headers" :items="searchCustomer" :search="searchTerm" :loading="loading">
-                    <template v-slot:item.customer_gender="{ item }">
-                        <v-chip :color="item.customer_gender === 'male' ? 'blue' :
-                            item.customer_gender === 'female' ? 'pink' : 'purple'" text-color="white" size="small">
-                            {{ item.customer_gender === 'male' ? 'ชาย' :
-                                item.customer_gender === 'female' ? 'หญิง' : 'ไม่ระบุ' }}
+                <v-data-table :headers="headers" :items="searchSaleStaff" :search="searchTerm" :loading="loading">
+                    <template v-slot:item.salestaff_gender="{ item }">
+                        <v-chip :color="item.salestaff_gender === 'male' ? 'blue' :
+                            item.salestaff_gender === 'female' ? 'pink' : 'purple'" text-color="white" size="small">
+                            {{ item.salestaff_gender === 'male' ? 'ชาย' :
+                                item.salestaff_gender === 'female' ? 'หญิง' : 'ไม่ระบุ' }}
                         </v-chip>
-                    </template> 
+                    </template>
                     <template v-slot:item.actions="{ item }">
                         <v-menu offset-y>
                             <template v-slot:activator="{ props }">
@@ -129,18 +126,18 @@ const searchCustomer = computed(() => {
                             </template>
                             <v-list>
                                 <v-list-item class="cursor-pointer" density="compact">
-                                    <v-list-item-title @click="viewDetail(item.customer_id)">
+                                    <v-list-item-title @click="viewDetail(item.salestaff_id)">
                                         <v-icon>mdi-chat-processing-outline</v-icon> {{ $t('button.detail')
                                         }}
                                     </v-list-item-title>
                                 </v-list-item>
                                 <v-list-item class="cursor-pointer" density="compact">
-                                    <v-list-item-title @click="onUpdate(item.customer_id)">
+                                    <v-list-item-title @click="onUpdate(item.salestaff_id)">
                                         <v-icon>mdi-square-edit-outline</v-icon> {{ $t('button.edit') }}
                                     </v-list-item-title>
                                 </v-list-item>
                                 <v-list-item class="cursor-pointer" density="compact"
-                                    @click="onDelete(item.customer_id)">
+                                    @click="onDelete(item.salestaff_id)">
                                     <v-list-item-title>
                                         <v-icon>mdi-trash-can-outline</v-icon> {{ $t('button.delete') }}
                                     </v-list-item-title>
@@ -156,35 +153,35 @@ const searchCustomer = computed(() => {
     <v-dialog v-model="dialogAdd" max-width="1200px">
         <v-card>
             <v-toolbar color="muted">
-                <v-toolbar-title>{{ t('customer.title_add') }}</v-toolbar-title>
+                <v-toolbar-title>{{ t('salestaff.title_add') }}</v-toolbar-title>
                 <v-btn icon dark @click="closeDialog('add')">
                     <v-icon size="tiny">mdi-close</v-icon>
                 </v-btn>
             </v-toolbar>
-            <CustomerAdd v-on:done="() => fetchCustomers()" v-on:close="() => closeDialog('add')" />
+            <SaleStaffAdd v-on:done="() => fetchSaleStaffs()" v-on:close="() => closeDialog('add')" />
         </v-card>
     </v-dialog>
     <v-dialog v-model="dialogUpdate" max-width="1200px">
         <v-card>
             <v-toolbar color="muted">
-                <v-toolbar-title>{{ t('customer.title_update') }}</v-toolbar-title>
+                <v-toolbar-title>{{ t('salestaff.title_update') }}</v-toolbar-title>
                 <v-btn icon dark @click="closeDialog('update')">
                     <v-icon size="tiny">mdi-close</v-icon>
                 </v-btn>
             </v-toolbar>
-            <CustomerUpdate :customer_id="customer_id" v-on:done="() => fetchCustomers()"
+            <SaleStaffUpdate :salestaff_id="salestaff_id" v-on:done="() => fetchSaleStaffs()"
                 v-on:close="() => closeDialog('update')" />
         </v-card>
     </v-dialog>
     <v-dialog v-model="dialogDetail" max-width="600px">
         <v-card>
             <v-toolbar color="muted">
-                <v-toolbar-title>{{ t('customer.title_detail') }}</v-toolbar-title>
+                <v-toolbar-title>{{ t('salestaff.title_detail') }}</v-toolbar-title>
                 <v-btn icon dark @click="closeDialog('detail')">
                     <v-icon size="tiny">mdi-close</v-icon>
                 </v-btn>
             </v-toolbar>
-            <CustomerDetail v-on:close="() => closeDialog('detail')" :customer_id="customer_id" />
+            <SaleStaffDetail v-on:close="() => closeDialog('detail')" :salestaff_id="salestaff_id" />
         </v-card>
     </v-dialog>
 </template>
