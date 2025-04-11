@@ -74,14 +74,14 @@ const validateForm = () => {
                 <v-label class="mb-2">
                     {{ $t('stock.inventories') }}<span class="text-error ml-1">*</span>
                 </v-label>
-                <v-text-field v-model="stock.stock_inventories" :error-messages="errors.stock_inventories"
+                <v-text-field v-model="stock.stock_inventories" type="number" :error-messages="errors.stock_inventories"
                     variant="outlined" density="compact" :placeholder="$t('stock.inventories')" />
             </v-col>
             <v-col cols="12" md="4">
                 <v-label class="mb-2">
                     {{ $t('stock.productall') }}<span class="text-error ml-1">*</span>
                 </v-label>
-                <v-text-field v-model="stock.stock_productall" :error-messages="errors.stock_productall"
+                <v-text-field v-model="stock.stock_productall" type="number" :error-messages="errors.stock_productall"
                     variant="outlined" density="compact" :placeholder="$t('stock.productall')" />
             </v-col>
             <v-col cols="12">

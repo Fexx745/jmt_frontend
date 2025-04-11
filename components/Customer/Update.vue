@@ -109,23 +109,23 @@ const validateForm = () => {
                 </v-col>
                 <v-col cols="12" md="4">
                     <v-label class="mb-2">{{ $t('customer.tel') }}<span class="text-error ml-1">*</span></v-label>
-                    <v-text-field v-model="customer.customer_tel" :error-messages="errors.customer_tel"
+                    <v-text-field v-model="customer.customer_tel" type="number" :error-messages="errors.customer_tel"
                         variant="outlined" density="compact" />
                 </v-col>
                 <v-col cols="12" md="4" style="margin-top: -30px;">
                     <v-label class="mb-2">{{ $t('customer.fax') }}<span class="text-error ml-1">*</span></v-label>
-                    <v-text-field v-model="customer.customer_fax" :error-messages="errors.customer_fax"
+                    <v-text-field v-model="customer.customer_fax" type="number" :error-messages="errors.customer_fax"
                         variant="outlined" density="compact" />
                 </v-col>
                 <v-col cols="12" md="4" style="margin-top: -30px;">
                     <v-label class="mb-2">{{ $t('customer.tax') }}<span class="text-error ml-1">*</span></v-label>
-                    <v-text-field v-model="customer.customer_tax" :error-messages="errors.customer_tax"
+                    <v-text-field v-model="customer.customer_tax" type="number" :error-messages="errors.customer_tax"
                         variant="outlined" density="compact" />
                 </v-col>
                 <v-col cols="12" md="4" style="margin-top: -30px;">
                     <v-label class="mb-2">{{ $t('customer.no') }}<span class="text-error ml-1">*</span></v-label>
-                    <v-text-field v-model="customer.customer_no" :error-messages="errors.customer_no" variant="outlined"
-                        density="compact" />
+                    <v-text-field v-model="customer.customer_no" type="number" :error-messages="errors.customer_no"
+                        variant="outlined" density="compact" />
                 </v-col>
                 <v-col cols="12" md="3" style="margin-top: -30px;">
                     <v-label class="mb-2">{{ $t('customer.tambon') }}</v-label>
@@ -141,8 +141,8 @@ const validateForm = () => {
                 </v-col>
                 <v-col cols="12" md="3" style="margin-top: -30px;">
                     <v-label class="mb-2">{{ $t('customer.code') }}</v-label>
-                    <v-text-field v-model="customer.customer_code" variant="outlined" density="compact" />
-                </v-col> 
+                    <v-text-field v-model="customer.customer_code" type="number" variant="outlined" density="compact" />
+                </v-col>
                 <v-col cols="12">
                     <v-divider></v-divider>
                 </v-col>

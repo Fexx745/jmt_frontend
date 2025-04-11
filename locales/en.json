@@ -114,6 +114,23 @@
         "title_update": "Edit Order",
         "title_detail": "Order Detail"
     },
+    "sales": {
+        "id": "Sales ID",
+        "productone": "Sales of individual products",
+        "productall": "Total product sales",
+        "date": "Date",
+        "day": "Daily sales",
+        "month": "Monthly sales",
+        "year": "Yearly sales",
+        "title": "Sales data"
+    },
+    "report": {
+        "id": "Report ID",
+        "date": "Date",
+        "product": "Product Report",
+        "sales": "Sales Report",
+        "title": "Report"
+    },
     "button": {
         "add": "Add",
         "edit": "Edit",

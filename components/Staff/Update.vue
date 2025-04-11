@@ -111,13 +111,13 @@ const validateForm = () => {
                     <v-label>
                         {{ $t('staff.age') }}<span class="text-error ml-1">*</span>
                     </v-label>
-                    <v-text-field v-model="staff.staff_age" :error-messages="errors.staff_age" variant="outlined"
-                        density="compact" :placeholder="$t('staff.age')" />
+                    <v-text-field v-model="staff.staff_age" type="number" :error-messages="errors.staff_age"
+                        variant="outlined" density="compact" :placeholder="$t('staff.age')" />
                 </v-col>
                 <v-col cols="12" md="4" style="margin-top: -30px;">
                     <v-label>{{ $t('staff.salary') }}<span class="text-error ml-1">*</span></v-label>
-                    <v-text-field v-model="staff.staff_salary" :error-messages="errors.staff_salary" variant="outlined"
-                        density="compact" :placeholder="$t('staff.salary')" />
+                    <v-text-field v-model="staff.staff_salary" type="number" :error-messages="errors.staff_salary"
+                        variant="outlined" density="compact" :placeholder="$t('staff.salary')" />
                 </v-col>
                 <v-col cols="12" md="4" style="margin-top: -30px;">
                     <v-label>{{ $t('staff.position') }}</v-label>

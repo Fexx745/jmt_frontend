@@ -110,15 +110,15 @@ const validateForm = () => {
                     <v-label class="mb-2">
                         {{ $t('store.no') }}<span class="text-error ml-1">*</span>
                     </v-label>
-                    <v-text-field v-model="store.store_no" :error-messages="errors.store_no" variant="outlined"
-                        density="compact" :placeholder="$t('store.no')" />
+                    <v-text-field v-model="store.store_no" type="number" :error-messages="errors.store_no"
+                        variant="outlined" density="compact" :placeholder="$t('store.no')" />
                 </v-col>
                 <v-col cols="12" md="4">
                     <v-label class="mb-2">
                         {{ $t('store.tel') }}<span class="text-error ml-1">*</span>
                     </v-label>
-                    <v-text-field v-model="store.store_tel" :error-messages="errors.store_tel" variant="outlined"
-                        density="compact" :placeholder="$t('store.tel')" />
+                    <v-text-field v-model="store.store_tel" type="number" :error-messages="errors.store_tel"
+                        variant="outlined" density="compact" :placeholder="$t('store.tel')" />
                 </v-col>
                 <v-col cols="12" md="12" style="margin-top: -30px;">
                     <v-label class="mb-2">
@@ -152,7 +152,7 @@ const validateForm = () => {
                     <v-label class="mb-2">
                         {{ $t('store.code') }}
                     </v-label>
-                    <v-text-field v-model="store.store_code" variant="outlined" density="compact"
+                    <v-text-field v-model="store.store_code" type="number" variant="outlined" density="compact"
                         :placeholder="$t('store.code')" />
                 </v-col>
                 <v-col cols="12">

@@ -108,13 +108,14 @@ const validateForm = () => {
                     <v-label class="mb-2">
                         {{ $t('salestaff.age') }}<span class="text-error ml-1">*</span>
                     </v-label>
-                    <v-text-field v-model="salestaff.salestaff_age" :error-messages="errors.salestaff_age"
+                    <v-text-field v-model="salestaff.salestaff_age" type="number" :error-messages="errors.salestaff_age"
                         variant="outlined" density="compact" :placeholder="$t('salestaff.age')" />
                 </v-col>
                 <v-col cols="12" md="3">
                     <v-label class="mb-2">{{ $t('salestaff.phone') }}<span class="text-error ml-1">*</span></v-label>
-                    <v-text-field v-model="salestaff.salestaff_phone" :error-messages="errors.salestaff_phone"
-                        variant="outlined" density="compact" :placeholder="$t('salestaff.phone')" />
+                    <v-text-field v-model="salestaff.salestaff_phone" type="number"
+                        :error-messages="errors.salestaff_phone" variant="outlined" density="compact"
+                        :placeholder="$t('salestaff.phone')" />
                 </v-col>
                 <v-col cols="12" md="12" style="margin-top: -30px;">
                     <v-label class="mb-2">{{ $t('salestaff.fax') }}<span class="text-error ml-1">*</span></v-label>

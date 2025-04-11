@@ -114,7 +114,7 @@ const searchOrder = computed(() => {
                         <span>{{ formatDate(item.order_date, "dd/MM/yyyy") }}</span>
                     </template>
                     <template v-slot:item.order_price="{ item }">
-                        <span>{{ decimalFix(item.order_price) }}</span>
+                        <span>{{ decimalFix(item.order_price) }} ฿</span>
                     </template>
                     <template v-slot:item.actions="{ item }">
                         <v-menu offset-y>

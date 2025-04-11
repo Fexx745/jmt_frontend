@@ -142,7 +142,7 @@ const validateForm = () => {
                     <v-label class="mb-2">
                         {{ $t('product.price') }}<span class="text-error ml-1">*</span>
                     </v-label>
-                    <v-text-field v-model="product.product_price" :error-messages="errors.product_price"
+                    <v-text-field v-model="product.product_price" type="number" :error-messages="errors.product_price"
                         variant="outlined" density="compact" :placeholder="$t('product.price')" />
                 </v-col>
                 <v-col cols="12" md="6" style="margin-top: -30px;">

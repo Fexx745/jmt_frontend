@@ -125,7 +125,7 @@ const searchProduct = computed(() => {
                         <span>{{ formatDate(item.product_exp, "dd/MM/yyyy") }}</span>
                     </template>
                     <template v-slot:item.product_price="{ item }">
-                        <span>{{ decimalFix(item.product_price) }}</span>
+                        <span>{{ decimalFix(item.product_price) }} ฿</span>
                     </template>
                     <template v-slot:item.actions="{ item }">
                         <v-menu offset-y>

@@ -120,7 +120,7 @@ const searchStaff = computed(() => {
                         </v-chip>
                     </template>
                     <template v-slot:item.staff_salary="{ item }">
-                        <span>{{ decimalFix(item.staff_salary) }}</span>
+                        <span>{{ decimalFix(item.staff_salary) }} ฿</span>
                     </template>
                     <template v-slot:item.actions="{ item }">
                         <v-menu offset-y>
