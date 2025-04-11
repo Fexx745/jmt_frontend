@@ -15,7 +15,9 @@ useHead({
     <v-app>
       <Main />
       <v-main>
-        <NuxtPage />
+        <v-container fluid class="page-wrapper">
+          <NuxtPage />
+        </v-container>
       </v-main>
     </v-app>
   </v-locale-provider>

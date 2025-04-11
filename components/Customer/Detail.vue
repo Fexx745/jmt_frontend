@@ -52,51 +52,63 @@ onMounted(async () => {
     <template v-else>
         <v-card-text>
             <v-row>
-                <v-col cols="6">
+                <v-col cols="12">
+                    <v-label>{{ $t('customer.id') }}:</v-label>
+                    <v-chip color="primary" variant="text" label>
+                        {{ customer.customer_id }}
+                    </v-chip>
+                </v-col>
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.name') }}:</v-label>
-                    <div>{{ customer.customer_name }}</div>
+                    {{ customer.customer_name }}
                 </v-col>
-                <v-col cols="6">
-                    <v-label>{{ $t('customer.gender') }}:</v-label>
-                    <div>{{ customer.customer_gender }}</div>
+                <v-col cols="6" style="margin-top: -20px;">
+                    <v-label class="mr-2">{{ $t('customer.gender') }}:</v-label>
+                    <v-chip :color="customer.customer_gender === 'Male' ? 'blue' :
+                        customer.customer_gender === 'Female' ? 'pink' : 'purple'" text-color="white" size="small">
+                        {{ customer.customer_gender === 'Male' ? 'ชาย' :
+                            customer.customer_gender === 'Female' ? 'หญิง' : 'ไม่ระบุ' }}
+                    </v-chip>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.tel') }}:</v-label>
-                    <div>{{ customer.customer_tel }}</div>
+                    {{ customer.customer_tel }}
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.fax') }}:</v-label>
-                    <div>{{ customer.customer_fax }}</div>
+                    {{ customer.customer_fax }}
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.tax') }}:</v-label>
-                    <div>{{ customer.customer_tax }}</div>
+                    {{ customer.customer_tax }}
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.no') }}:</v-label>
-                    <div>{{ customer.customer_no }}</div>
+                    {{ customer.customer_no }}
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.tambon') }}:</v-label>
-                    <div>{{ customer.customer_tambon }}</div>
+                    {{ customer.customer_tambon }}
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.aumper') }}:</v-label>
-                    <div>{{ customer.customer_aumper }}</div>
+                    {{ customer.customer_aumper }}
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.province') }}:</v-label>
-                    <div>{{ customer.customer_province }}</div>
+                    {{ customer.customer_province }}
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" style="margin-top: -20px;">
                     <v-label>{{ $t('customer.code') }}:</v-label>
-                    <div>{{ customer.customer_code }}</div>
+                    {{ customer.customer_code }}
+                </v-col> 
+                <v-col cols="12">
+                    <v-divider></v-divider>
                 </v-col>
+                <v-card-text class="d-flex justify-center py-4">
+                    <v-btn color="primary" size="small" @click="() => emit('close')">{{ t('button.close') }}</v-btn>
+                </v-card-text>
             </v-row>
-        </v-card-text> 
-        <v-divider></v-divider>
-        <v-card-text class="d-flex justify-center py-4">
-            <v-btn color="primary" @click="() => emit('close')">{{ t('button.close') }}</v-btn>
         </v-card-text>
     </template>
 </template>

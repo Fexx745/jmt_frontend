@@ -1,34 +1,35 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import type { SaleStaff } from "@/misc/type";
-const { getSaleStaffByID } = useSaleStaff();
+import type { Staff } from "@/misc/type";
+const { getStaffByID } = useStaff();
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 
 const emit = defineEmits(['close'])
 const props = defineProps({
-    salestaff_id: {
+    staff_id: {
         type: String,
         required: true,
     },
 })
 const pending = ref(false)
 
-const salestaff = ref<SaleStaff>({
-    salestaff_id: '',
-    salestaff_name: '',
-    salestaff_gender: '',
-    salestaff_age: '',
-    salestaff_phone: '',
-    salestaff_fax: ''
+const staff = ref<Staff>({
+    staff_id: '',
+    staff_name: '',
+    staff_gender: '',
+    staff_age: '',
+    staff_salary: '',
+    staff_position: '',
+    staff_study: ''
 })
 
 onMounted(async () => {
     pending.value = true
     try {
-        const res = await getSaleStaffByID({ salestaff_id: props.salestaff_id });
-        salestaff.value = res;
+        const res = await getStaffByID({ staff_id: props.staff_id });
+        staff.value = res;
     } catch (error) {
         console.error("Error", error);
     } finally {
@@ -48,35 +49,39 @@ onMounted(async () => {
         <v-card-text>
             <v-row>
                 <v-col cols="12">
-                    <v-label>{{ $t('salestaff.id') }}:</v-label>
+                    <v-label>{{ $t('staff.id') }}:</v-label>
                     <v-chip color="primary" variant="text" label>
-                        {{ salestaff.salestaff_id }}
+                        {{ staff.staff_id }}
                     </v-chip>
                 </v-col>
                 <v-col cols="6" style="margin-top: -20px;">
-                    <v-label>{{ $t('salestaff.name') }}:</v-label>
-                    {{ salestaff.salestaff_name }}
+                    <v-label>{{ $t('staff.name') }}:</v-label>
+                    {{ staff.staff_name }}
                 </v-col>
                 <v-col cols="6" style="margin-top: -20px;">
-                    <v-label class="mr-2">{{ $t('salestaff.gender') }}:</v-label>
-                    <v-chip :color="salestaff.salestaff_gender === 'Male' ? 'blue' :
-                        salestaff.salestaff_gender === 'Female' ? 'pink' : 'purple'" text-color="white" size="small">
-                        {{ salestaff.salestaff_gender === 'Male' ? 'ชาย' :
-                            salestaff.salestaff_gender === 'Female' ? 'หญิง' : 'ไม่ระบุ' }}
+                    <v-label class="mr-2">{{ $t('staff.gender') }}:</v-label>
+                    <v-chip :color="staff.staff_gender === 'Male' ? 'blue' :
+                        staff.staff_gender === 'Female' ? 'pink' : 'purple'" text-color="white" size="small">
+                        {{ staff.staff_gender === 'Male' ? 'ชาย' :
+                            staff.staff_gender === 'Female' ? 'หญิง' : 'ไม่ระบุ' }}
                     </v-chip>
                 </v-col>
                 <v-col cols="6" style="margin-top: -20px;">
-                    <v-label>{{ $t('salestaff.age') }}:</v-label>
-                    {{ salestaff.salestaff_age }}
+                    <v-label>{{ $t('staff.age') }}:</v-label>
+                    {{ staff.staff_age }}
                 </v-col>
                 <v-col cols="6" style="margin-top: -20px;">
-                    <v-label>{{ $t('salestaff.phone') }}:</v-label>
-                    {{ salestaff.salestaff_phone }}
+                    <v-label>{{ $t('staff.salary') }}:</v-label>
+                    {{ staff.staff_salary }}
                 </v-col>
                 <v-col cols="6" style="margin-top: -20px;">
-                    <v-label>{{ $t('salestaff.fax') }}:</v-label>
-                    {{ salestaff.salestaff_fax }}
+                    <v-label>{{ $t('staff.position') }}:</v-label>
+                    {{ staff.staff_position }}
                 </v-col>
+                <v-col cols="6" style="margin-top: -20px;">
+                    <v-label>{{ $t('staff.study') }}:</v-label>
+                    {{ staff.staff_study }}
+                </v-col> 
                 <v-col cols="12">
                     <v-divider></v-divider>
                 </v-col>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import LanguageSwitcher from "./vertical-header/LanguageSwitcher.vue";
-import ThemeSwitcher from "./vertical-header/ThemeSwitcher.vue";
 import ProfileDD from "./vertical-header/ProfileDD.vue";
 
 const { t } = useI18n();
@@ -71,8 +70,7 @@ const sDrawer = ref(true);
                 </v-btn>
             </div>
             <div class="d-flex align-center">
-                <LanguageSwitcher />
-                <ThemeSwitcher />
+                <LanguageSwitcher /> 
                 <ProfileDD />
             </div>
         </div>

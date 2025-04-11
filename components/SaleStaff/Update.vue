@@ -63,7 +63,6 @@ const validateForm = () => {
     let isValid = true;
     const fields = [
         { key: 'salestaff_name' },
-        { key: 'salestaff_gender' },
         { key: 'salestaff_fax' },
         { key: 'salestaff_age' },
         { key: 'salestaff_phone' },
@@ -97,11 +96,13 @@ const validateForm = () => {
                 </v-col>
                 <v-col cols="12" md="3">
                     <v-label class="mb-2">
-                        {{ $t('salestaff.gender') }}<span class="text-error ml-1">*</span>
+                        {{ $t('salestaff.gender') }}
                     </v-label>
-                    <v-select v-model="salestaff.salestaff_gender" :error-messages="errors.salestaff_gender"
-                        :items="['male', 'female']" variant="outlined" density="compact"
-                        :placeholder="$t('salestaff.gender')" return-object />
+                    <v-select v-model="salestaff.salestaff_gender" :items="[
+                        { label: 'ชาย', value: 'Male' },
+                        { label: 'หญิง', value: 'Female' }
+                    ]" item-title="label" item-value="value" variant="outlined" density="compact"
+                        :placeholder="$t('salestaff.gender')" />
                 </v-col>
                 <v-col cols="12" md="3">
                     <v-label class="mb-2">
@@ -115,21 +116,24 @@ const validateForm = () => {
                     <v-text-field v-model="salestaff.salestaff_phone" :error-messages="errors.salestaff_phone"
                         variant="outlined" density="compact" :placeholder="$t('salestaff.phone')" />
                 </v-col>
-                <v-col cols="12" md="12">
+                <v-col cols="12" md="12" style="margin-top: -30px;">
                     <v-label class="mb-2">{{ $t('salestaff.fax') }}<span class="text-error ml-1">*</span></v-label>
                     <v-text-field v-model="salestaff.salestaff_fax" :error-messages="errors.salestaff_fax"
                         variant="outlined" density="compact" :placeholder="$t('salestaff.fax')" />
                 </v-col>
+                <v-col cols="12">
+                    <v-divider></v-divider>
+                </v-col>
+                <v-card-text class="d-flex justify-center py-4">
+                    <v-btn color="success" size="small" @click="onSubmit" class="mr-2">
+                        <template v-if="submitting">
+                            <v-progress-circular class="mr-2" indeterminate color="success"
+                                :size="16"></v-progress-circular>
+                        </template> {{ t('button.save') }}
+                    </v-btn>
+                    <v-btn color="red" size="small" @click="() => emit('close')">{{ t('button.cancel') }}</v-btn>
+                </v-card-text>
             </v-row>
-        </v-card-text>
-        <v-divider></v-divider>
-        <v-card-text class="d-flex justify-center py-4">
-            <v-btn color="success" @click="onSubmit" class="mr-2">
-                <template v-if="submitting">
-                    <v-progress-circular class="mr-2" indeterminate color="success" :size="16"></v-progress-circular>
-                </template> {{ t('button.save') }}
-            </v-btn>
-            <v-btn color="red" @click="() => emit('close')">{{ t('button.cancel') }}</v-btn>
         </v-card-text>
     </template>
 </template>

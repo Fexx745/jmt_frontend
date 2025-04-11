@@ -57,7 +57,6 @@ const validateForm = () => {
     let isValid = true;
     const fields = [
         { key: 'customer_name' },
-        { key: 'customer_gender' },
         { key: 'customer_tel' },
         { key: 'customer_fax' },
         { key: 'customer_tax' },
@@ -85,11 +84,13 @@ const validateForm = () => {
             </v-col>
             <v-col cols="12" md="4">
                 <v-label class="mb-2">
-                    {{ $t('customer.gender') }}<span class="text-error ml-1">*</span>
+                    {{ $t('customer.gender') }}
                 </v-label>
-                <v-select v-model="customer.customer_gender" :error-messages="errors.customer_gender"
-                    :items="['male', 'female']" variant="outlined" density="compact"
-                    :placeholder="$t('customer.gender')" return-object />
+                <v-select v-model="customer.customer_gender" :items="[
+                    { label: 'ชาย', value: 'Male' },
+                    { label: 'หญิง', value: 'Female' }
+                ]" item-title="label" item-value="value" variant="outlined" density="compact"
+                    :placeholder="$t('customer.gender')" />
             </v-col>
             <v-col cols="12" md="4">
                 <v-label class="mb-2">
@@ -98,57 +99,58 @@ const validateForm = () => {
                 <v-text-field v-model="customer.customer_tel" :error-messages="errors.customer_tel" variant="outlined"
                     density="compact" :placeholder="$t('customer.tel')" />
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="4" style="margin-top: -30px;">
                 <v-label class="mb-2">{{ $t('customer.fax') }}<span class="text-error ml-1">*</span></v-label>
                 <v-text-field v-model="customer.customer_fax" :error-messages="errors.customer_fax" variant="outlined"
                     density="compact" :placeholder="$t('customer.fax')" />
             </v-col>
 
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="4" style="margin-top: -30px;">
                 <v-label class="mb-2">{{ $t('customer.tax') }}<span class="text-error ml-1">*</span></v-label>
                 <v-text-field v-model="customer.customer_tax" :error-messages="errors.customer_tax" variant="outlined"
                     density="compact" :placeholder="$t('customer.tax')" />
             </v-col>
 
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="4" style="margin-top: -30px;">
                 <v-label class="mb-2">{{ $t('customer.no') }}<span class="text-error ml-1">*</span></v-label>
                 <v-text-field v-model="customer.customer_no" :error-messages="errors.customer_no" variant="outlined"
                     density="compact" :placeholder="$t('customer.no')" />
             </v-col>
 
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="3" style="margin-top: -30px;">
                 <v-label class="mb-2">{{ $t('customer.tambon') }}</v-label>
                 <v-text-field v-model="customer.customer_tambon" variant="outlined" density="compact"
                     :placeholder="$t('customer.tambon')" />
             </v-col>
 
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="3" style="margin-top: -30px;">
                 <v-label class="mb-2">{{ $t('customer.aumper') }}</v-label>
                 <v-text-field v-model="customer.customer_aumper" variant="outlined" density="compact"
                     :placeholder="$t('customer.aumper')" />
             </v-col>
 
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="3" style="margin-top: -30px;">
                 <v-label class="mb-2">{{ $t('customer.province') }}</v-label>
                 <v-text-field v-model="customer.customer_province" variant="outlined" density="compact"
                     :placeholder="$t('customer.province')" />
             </v-col>
-
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="3" style="margin-top: -30px;">
                 <v-label class="mb-2">{{ $t('customer.code') }}</v-label>
                 <v-text-field v-model="customer.customer_code" variant="outlined" density="compact"
                     :placeholder="$t('customer.code')" />
             </v-col>
+            <v-col cols="12">
+                <v-divider></v-divider>
+            </v-col>
+            <v-card-text class="d-flex justify-center py-4">
+                <v-btn color="success" size="small" @click="onSubmit" class="mr-2">
+                    <template v-if="submitting">
+                        <v-progress-circular class="mr-2" indeterminate color="success"
+                            :size="16"></v-progress-circular>
+                    </template> {{ t('button.save') }}
+                </v-btn>
+                <v-btn color="red" size="small" @click="() => emit('close')">{{ t('button.cancel') }}</v-btn>
+            </v-card-text>
         </v-row>
-
-    </v-card-text>
-    <v-divider></v-divider>
-    <v-card-text class="d-flex justify-center py-4">
-        <v-btn color="success" @click="onSubmit" class="mr-2">
-            <template v-if="submitting">
-                <v-progress-circular class="mr-2" indeterminate color="success" :size="16"></v-progress-circular>
-            </template> {{ t('button.save') }}
-        </v-btn>
-        <v-btn color="red" @click="() => emit('close')">{{ t('button.cancel') }}</v-btn>
     </v-card-text>
 </template>

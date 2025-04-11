@@ -11,7 +11,7 @@ const dialogUpdate = ref(false);
 const dialogDetail = ref(false);
 const customers = ref<Customer[]>([]);
 const loading = ref(false);
-const searchTerm = ref('');
+const search = ref('');
 const customer_id = ref('');
 
 const headers = computed(() => [
@@ -84,8 +84,8 @@ const viewDetail = (id: string) => {
 };
 
 const searchCustomer = computed(() => {
-    if (!searchTerm.value) return customers.value;
-    const term = searchTerm.value.toLowerCase();
+    if (!search.value) return customers.value;
+    const term = search.value.toLowerCase();
 
     return customers.value.filter(customer =>
         customer.customer_name.toLowerCase().includes(term)
@@ -103,7 +103,7 @@ const searchCustomer = computed(() => {
             <v-card-text>
                 <v-row class="mb-4 mt-2">
                     <v-col class="d-flex flex-wrap gap-2 align-center  py-2" cols="12" md="3">
-                        <v-text-field v-model="searchTerm" :label="t('any.search')" append-inner-icon="mdi-magnify"
+                        <v-text-field v-model="search" :label="t('any.search')" append-inner-icon="mdi-magnify"
                             density="compact" variant="outlined" hide-details style="width: 500px"></v-text-field>
                     </v-col>
                     <v-col class="d-flex flex-wrap gap-2 align-center justify-md-end py-2" cols="12" md="9">
@@ -112,14 +112,14 @@ const searchCustomer = computed(() => {
                         </v-btn>
                     </v-col>
                 </v-row>
-                <v-data-table :headers="headers" :items="searchCustomer" :search="searchTerm" :loading="loading">
+                <v-data-table :headers="headers" :items="searchCustomer" :search="search" :loading="loading">
                     <template v-slot:item.customer_gender="{ item }">
-                        <v-chip :color="item.customer_gender === 'male' ? 'blue' :
-                            item.customer_gender === 'female' ? 'pink' : 'purple'" text-color="white" size="small">
-                            {{ item.customer_gender === 'male' ? 'ชาย' :
-                                item.customer_gender === 'female' ? 'หญิง' : 'ไม่ระบุ' }}
+                        <v-chip :color="item.customer_gender === 'Male' ? 'blue' :
+                            item.customer_gender === 'Female' ? 'pink' : 'purple'" text-color="white" size="small">
+                            {{ item.customer_gender === 'Male' ? 'ชาย' :
+                                item.customer_gender === 'Female' ? 'หญิง' : 'ไม่ระบุ' }}
                         </v-chip>
-                    </template> 
+                    </template>
                     <template v-slot:item.actions="{ item }">
                         <v-menu offset-y>
                             <template v-slot:activator="{ props }">
@@ -188,13 +188,3 @@ const searchCustomer = computed(() => {
         </v-card>
     </v-dialog>
 </template>
-
-<style scoped>
-.v-container {
-    padding: 16px;
-}
-
-.v-btn {
-    margin-right: 8px;
-}
-</style>

@@ -32,6 +32,88 @@
         "title_update": "Edit Sales Staff",
         "title_detail": "Sales Staff Detail"
     },
+    "staff": {
+        "id": "Staff ID",
+        "name": "Staff Name",
+        "gender": "Gender",
+        "age": "Age",
+        "salary": "Salary",
+        "position": "Position",
+        "study": "Study",
+        "manage": "Manage Staff",
+        "title_add": "Add Staff",
+        "title_update": "Edit Staff",
+        "title_detail": "Staff Detail"
+    },
+    "product": {
+        "id": "Product ID",
+        "name": "Product Name",
+        "price": "Price",
+        "moo": "Category",
+        "type": "Type",
+        "mxp": "MXP.",
+        "exp": "EXP.",
+        "manage": "Manage Product",
+        "title_add": "Add Product",
+        "title_update": "Edit Product",
+        "title_detail": "Product Detail"
+    },
+    "store": {
+        "id": "Store ID",
+        "name": "Store Name",
+        "detail": "Store Detail",
+        "tel": "Phone",
+        "no": "No",
+        "tambon": "Tambon",
+        "aumper": "Aumphoe",
+        "province": "Province",
+        "code": "Postal Code",
+        "manage": "Manage Store",
+        "title_add": "Add Store",
+        "title_update": "Edit Store",
+        "title_detail": "Store Detail"
+    },
+    "manager": {
+        "id": "Manager ID",
+        "name": "Manager Name",
+        "manage": "Manage Manager",
+        "title_add": "Add Manager",
+        "title_update": "Edit Manager",
+        "title_detail": "Manager Detail"
+    },
+    "promotion": {
+        "id": "Promotion ID",
+        "name": "Promotion Name",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "detail": "Detail",
+        "manage": "Manage Promotion",
+        "title_add": "Add Promotion",
+        "title_update": "Edit Promotion",
+        "title_detail": "Promotion Detail"
+    },
+    "stock": {
+        "id": "Stock ID",
+        "inventories": "Inventories",
+        "productall": "Product All",
+        "productname": "Product Name",
+        "manage": "Manage Stock",
+        "title_add": "Add Stock",
+        "title_update": "Edit Stock",
+        "title_detail": "Stock Detail"
+    },
+    "order": {
+        "id": "Order ID",
+        "name": "Order Name",
+        "price": "Price",
+        "amount": "Amount",
+        "detail": "Detail",
+        "date": "Date of Order",
+        "manage": "Manage Order",
+        "title_add": "Add Order",
+        "title_update": "Edit Order",
+        "title_detail": "Order Detail"
+    },
     "button": {
         "add": "Add",
         "edit": "Edit",
