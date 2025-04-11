@@ -9,4 +9,5 @@ export * from './sales';
 export * from './staff';
 export * from './stock';
 export * from './store'; 
+export * from './slip'; 
 export * from './report'; 

@@ -13,6 +13,8 @@
     "@mdi/font": "^7.4.47",
     "@vuepic/vue-datepicker": "^11.0.2",
     "axios": "^1.8.4",
+    "jspdf": "^3.0.1",
+    "jspdf-autotable": "^5.0.2",
     "moment": "^2.30.1",
     "nuxt": "^3.16.1",
     "sweetalert2": "^11.17.2",

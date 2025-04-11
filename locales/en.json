@@ -131,6 +131,13 @@
         "sales": "Sales Report",
         "title": "Report"
     },
+    "slip": {
+        "id": "ID",
+        "date": "Date",
+        "total": "Total",
+        "store": "Store",
+        "VAT": "VAT"
+    },
     "button": {
         "add": "Add",
         "edit": "Edit",
