@@ -1,75 +1,53 @@
-# Nuxt Minimal Starter
+Function AutoIDPettyCash()
+    Dim MM, YY, TmpIDAutoPetty, TmpIDPetty As String
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+    MM = ""
+    YY = ""
+    TmpIDAutoPetty = ""
+    TmpIDPetty = ""
 
-## Setup
+    'ประกาศตัวแปรเพื่อรับวันที่จาก Server
+    Dim comDate As New System.Data.SqlClient.SqlCommand("SELECT getDate()", con)
+    DateServer = comDate.ExecuteScalar()
 
-Make sure to install dependencies:
+    'เก็บเดือนและปี ปัจจุบันจาก Server
+    MM = Month(DateServer)
+    YY = Year(DateServer)
 
-```bash
-# npm
-npm install
+    'เติม 0 ข้างหน้าเดือนให้ครบ 2 หลัก เช่น 01, 02, ..., 12
+    While Len(MM) < 2
+        MM = "0" + MM
+    End While
 
-# pnpm
-pnpm install
+    'ตรวจสอบว่ามีเลข ID เดิมในเดือนและปีนี้หรือไม่
+    Dim comID As New System.Data.SqlClient.SqlCommand("SELECT ID_PettyCash FROM tbl_PettyCash WHERE ID_PettyCash like '%" & YY & MM & "%'", con)
+    Dim ResultID As Object = comID.ExecuteScalar
 
-# yarn
-yarn install
+    If (ResultID Is Nothing) Or (ResultID Is DBNull.Value) Then
+        TmpIDPetty = "0000" 'ถ้ายังไม่มีให้เริ่มที่ 0000
+    Else
+        'ถ้ามีแล้วให้ดึงเลขล่าสุดออกมา
+        Dim com As New System.Data.SqlClient.SqlCommand("SELECT MAX(RIGHT(ID_PettyCash,10)) FROM tbl_PettyCash", con)
+        TmpIDPetty = com.ExecuteScalar()
+    End If
 
-# bun
-bun install
-```
+    'เพิ่มค่าเลขท้าย ID
+    TmpIDPetty = Right(TmpIDPetty, 4)
+    TmpIDPetty = TmpIDPetty + 1
 
-## Development Server
+    'เติม 0 ข้างหน้าเลขท้าย ID ให้ครบ 4 หลัก
+    While Len(TmpIDPetty) < 4
+        TmpIDPetty = "0" + TmpIDPetty
+    End While
 
-Start the development server on `http://localhost:3000`:
+    'รวมปี + เดือน + เลข ID 4 หลัก
+    TmpIDAutoPetty = YY & MM & TmpIDPetty
 
-```bash
-# npm
-npm run dev
+    'คืนค่า ID อัตโนมัติ
+    Return TmpIDAutoPetty
+End Function
 
-# pnpm
-pnpm dev
+สรุป:
+1:1 Relationship: PettyCash มีความสัมพันธ์กับ Date เพื่อกำหนดรหัส ID_PettyCash โดยใช้เดือนและปี
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+1:M Relationship: 1 เดือนและปี (Date) สามารถมีหลายการเบิกจ่าย (หลาย ID_PettyCash) โดยแต่ละการเบิกจ่ายจะมี TmpIDPetty ที่เพิ่มขึ้น

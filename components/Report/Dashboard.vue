@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { decimalFix } from "@/utils/number-func"
-import { formatDate } from "@/utils/date-func"
 import type { Report } from "@/misc/type"
 import { useI18n } from 'vue-i18n'
 

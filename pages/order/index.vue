@@ -81,13 +81,6 @@ const viewDetail = (id: string) => {
     dialogDetail.value = true;
 };
 
-const searchOrder = computed(() => {
-    if (!search.value) return order.value;
-    const term = search.value.toLowerCase();
-    return order.value.filter(order =>
-        order.order_name.toLowerCase().includes(term)
-    );
-});
 </script>
 
 <template>
@@ -109,7 +102,7 @@ const searchOrder = computed(() => {
                         </v-btn>
                     </v-col>
                 </v-row>
-                <v-data-table :headers="headers" :items="searchOrder" :search="search" :loading="loading">
+                <v-data-table :headers="headers" :items="order" :search="search" :loading="loading">
                     <template v-slot:item.order_date="{ item }">
                         <span>{{ formatDate(item.order_date, "dd/MM/yyyy") }}</span>
                     </template>

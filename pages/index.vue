@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 
-onMounted(() => { 
-    
-    
+onMounted(() => {
+
+
 }); 
 </script>
 
 <template>
-    <div>
-        <h1>Welcome to GGAS Stock Frontend</h1>
-        <p>This is the homepage of your application.</p>
-    </div>
+    <h1>Hello World Nakub!</h1>
 </template>

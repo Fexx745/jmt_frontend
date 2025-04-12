@@ -39,26 +39,26 @@ const sDrawer = ref(true);
 
 <template>
     <v-navigation-drawer left elevation="0" app class="leftSidebar" v-model="sDrawer">
-        <div class="pa-2 ml-n4">
-            <LayoutFullLogo />
-        </div>
-        <perfect-scrollbar class="scrollnavbar">
-            <v-list class="py-2 px-4">
-                <template v-for="(menu, i) in sidebar_menus" :key="menu.header">
-                    <v-list-subheader v-if="menu.header" class="text-uppercase font-weight-bold">
-                        {{ menu.header }}
-                    </v-list-subheader>
-                    <template v-for="(item, index) in menu.childs" :key="index">
-                        <v-list-item :to="item.href" :value="item.href" color="primary" class="mb-1" rounded="lg">
-                            <template v-slot:prepend>
-                                <v-icon :icon="item.icon"></v-icon>
-                            </template>
-                            <v-list-item-title>{{ item.text }}</v-list-item-title>
-                        </v-list-item>
-                    </template>
+        <v-list class="py-2 px-4">
+            <v-list-subheader class="text-uppercase font-weight-bold text-h6">
+                Logo
+            </v-list-subheader>
+        </v-list>
+        <v-list class="py-2 px-4">
+            <template v-for="(menu, i) in sidebar_menus" :key="menu.header">
+                <v-list-subheader v-if="menu.header" class="text-uppercase font-weight-bold">
+                    {{ menu.header }}
+                </v-list-subheader>
+                <template v-for="(item, index) in menu.childs" :key="index">
+                    <v-list-item :to="item.href" :value="item.href" color="primary" class="mb-1" rounded="lg">
+                        <template v-slot:prepend>
+                            <v-icon :icon="item.icon"></v-icon>
+                        </template>
+                        <v-list-item-title>{{ item.text }}</v-list-item-title>
+                    </v-list-item>
                 </template>
-            </v-list>
-        </perfect-scrollbar>
+            </template>
+        </v-list>
     </v-navigation-drawer>
 
     <v-app-bar elevation="0" height="70">
@@ -70,7 +70,7 @@ const sDrawer = ref(true);
                 </v-btn>
             </div>
             <div class="d-flex align-center">
-                <LanguageSwitcher /> 
+                <LanguageSwitcher />
                 <ProfileDD />
             </div>
         </div>

@@ -12,8 +12,7 @@ export const responseInterceptor = (response: any): Promise<any> => {
 
 export const errorInterceptor = async (error: any, options: any): Promise<any> => {
   if (error?.response) {
-    const { status, statusText, _data } = error.response
-
+    const { status, statusText, _data } = error.response 
     Swal.fire({
       title: 'Request failed',
       text: _data.message || `${status} ${statusText}`,

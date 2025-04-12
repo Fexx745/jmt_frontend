@@ -26,7 +26,7 @@ onMounted(() => {
             <img :src="currentLocale === 'en'
                 ? 'https://cdn-icons-png.flaticon.com/128/197/197374.png'
                 : 'https://cdn-icons-png.flaticon.com/128/197/197452.png'" class="flag-icon" />
-            <span class="d-none d-md-inline ml-4  d-md-ml-0">
+            <span class="d-none d-md-inline ml-4 d-md-ml-0">
                 {{ currentLocale === 'en' ? 'English' : 'ไทย' }}
             </span>
         </v-btn>
@@ -36,6 +36,7 @@ onMounted(() => {
 <style scoped>
 .language-switcher {
     display: inline-block;
+    margin-right: 10px;
 }
 
 .locale-btn {

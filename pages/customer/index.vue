@@ -25,9 +25,7 @@ const headers = computed(() => [
     { title: t('customer.province'), key: 'customer_province' },
     { title: t('customer.code'), key: 'customer_code' },
     { title: t('any.actions'), key: 'actions' },
-]);
-
-
+]); 
 onMounted(async () => {
     await fetchCustomers();
 });
@@ -35,7 +33,7 @@ onMounted(async () => {
 const fetchCustomers = async () => {
     loading.value = true;
     try {
-        customers.value = await getCustomerBy();
+        customers.value = await getCustomerBy(); 
     } catch (error) {
         console.error("Error loading customers", error);
     } finally {
@@ -85,8 +83,7 @@ const viewDetail = (id: string) => {
 
 const searchCustomer = computed(() => {
     if (!search.value) return customers.value;
-    const term = search.value.toLowerCase();
-
+    const term = search.value.toLowerCase(); 
     return customers.value.filter(customer =>
         customer.customer_name.toLowerCase().includes(term)
     );
@@ -151,8 +148,7 @@ const searchCustomer = computed(() => {
                 </v-data-table>
             </v-card-text>
         </v-card>
-    </v-container>
-
+    </v-container> 
     <v-dialog v-model="dialogAdd" max-width="1200px">
         <v-card>
             <v-toolbar color="muted">

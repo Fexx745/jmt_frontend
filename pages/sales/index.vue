@@ -1,4 +1,4 @@
-<script setup lang="ts"> 
+<script setup lang="ts">
 import { decimalFix } from "@/utils/number-func"
 import { formatDate } from "@/utils/date-func"
 import type { Sales } from "@/misc/type";
@@ -12,7 +12,7 @@ const loading = ref(false);
 const search = ref('');
 
 const headers = computed(() => [
-    { title: t('sales.id'), key: 'sales_id' },
+    { title: t('sales.id'), key: 'sales_id', sortable: false },
     { title: t('sales.date'), key: 'sales_date' },
     { title: t('sales.productone'), key: 'sales_productone' },
     { title: t('sales.productall'), key: 'sales_productall' },

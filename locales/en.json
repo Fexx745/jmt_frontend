@@ -136,7 +136,9 @@
         "date": "Date",
         "total": "Total",
         "store": "Store",
-        "VAT": "VAT"
+        "VAT": "VAT",
+        "title": "Slip",
+        "pdf": "Print PDF"
     },
     "button": {
         "add": "Add",
